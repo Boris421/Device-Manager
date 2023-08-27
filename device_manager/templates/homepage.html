@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='GET'>
+    型號：<input type="text" name="model_name" value="{{ device.form.model_name }}">
+    狀態<input type="text" name="status" value="{{ device.form.status }}">
+    使用者<input type="text" name="user" value="{{ device.form.user }}">
+    擁有者<input type="text" name="owner" value="{{ device.form.owner }}">
+    <button type="submit">查詢</button>
+</form>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>型號</th>
+            <th>狀態</th>
+            <th>IP</th>
+            <th>MAC Address</th>
+            <th>使用者</th>
+            <th>擁有者</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for device in device_list %}
+        <tr>
+            <td>{{ device.device_model.device_model_name }}</td>
+            <td>{{ device.status }}</td>
+            <td>{{ device.ip }}</td>
+            <td>{{ device.mac_address }}</td>
+            <td>{{ device.user }}</td>
+            <td>{{ device.owner }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

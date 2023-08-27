@@ -1,0 +1,5 @@
+Django
+djangorestframework
+drf_yasg
+django-filter
+uwsgi

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  device_manager:
+    build: ./device_manager
+    container_name: device_manager_django
+    restart: always
+    command: [ "/bin/bash", "-c", "uwsgi --ini uwsgi.ini" ]
+    volumes:
+      - device_manager_data:/device_manager
+    environment:
+      - PYTHONUNBUFFERED=TURE
+    ports:
+      - "8000:8000"
+  nginx:
+    build: ./nginx
+    container_name: device_manager_nginx
+    restart: always
+    volumes:
+      - device_manager_data:/device_manager
+    ports:
+      - "80:80"
+    depends_on:
+      - device_manager
+
+volumes:
+  device_manager_data:
