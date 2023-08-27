@@ -7,7 +7,8 @@ services:
     restart: always
     command: [ "/bin/bash", "-c", "uwsgi --ini uwsgi.ini" ]
     volumes:
-      - device_manager_data:/device_manager
+      - device_manager_db:/device_manager/db
+      - device_manager_static:/device_manager/static
     environment:
       - PYTHONUNBUFFERED=TURE
     ports:
@@ -17,11 +18,12 @@ services:
     container_name: device_manager_nginx
     restart: always
     volumes:
-      - device_manager_data:/device_manager
+      - device_manager_static:/device_manager/static
     ports:
       - "80:80"
     depends_on:
       - device_manager
 
 volumes:
-  device_manager_data:
+  device_manager_db:
+  device_manager_static:
