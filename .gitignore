@@ -1,4 +1,4 @@
 __pycache__/
 migrations
 static
-*.sqlite3
+# *.sqlite3
