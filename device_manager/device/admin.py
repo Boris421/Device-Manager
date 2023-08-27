@@ -17,6 +17,7 @@ from .models import (
     SIM,
     SDCard,
     NPortSerial,
+    TestbedWifiAP,
 )
 
 
@@ -202,6 +203,12 @@ class NPortSerialAdmin(admin.ModelAdmin):
     search_fields = get_field_names(NPortSerial)
 
 
+class TestbedWifiAPAdmin(admin.ModelAdmin):
+    list_display = get_field_names(TestbedWifiAP)
+    search_fields = get_field_names(TestbedWifiAP)
+    inlines = [DeviceInline]
+
+
 # Register all models with their respective admin classes
 admin.site.register(TestbedNport, TestbedNportAdmin)
 admin.site.register(CellularModuleBrand, CellularModuleBrandAdmin)
@@ -220,3 +227,4 @@ admin.site.register(TestbedAID, TestbedAIDAdmin)
 admin.site.register(SIM, SIMAdmin)
 admin.site.register(SDCard, SDCardAdmin)
 admin.site.register(NPortSerial, NPortSerialAdmin)
+admin.site.register(TestbedWifiAP, TestbedWifiAPAdmin)
