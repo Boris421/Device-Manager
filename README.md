@@ -1,6 +1,6 @@
 # Device Manager
 
-Provide a platform to manage information about testing devjce and its usage status.
+Provide a platform to manage information about testing device and its status.
 
 ## How to use
 
